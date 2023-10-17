@@ -13,26 +13,27 @@ class BinVOEncoder(ModelEncoder):
     model = BinVO
     properties = [
         "import_href",
-        "name"
     ]
 
 
-class ShoesEncoder(ModelEncoder):
-    model = Shoe
-    properties = [
-        "id",
-        "name",
-    ]
+# class ShoesEncoder(ModelEncoder):
+#     model = Shoe
+#     properties = [
+#         "id",
+#         "name",
+#     ]
 
-    def get_extra_data(self, o):
-        return {"bin": o.bin.name}
+#     def get_extra_data(self, o):
+#         return {"bin": o.bin.name}
 
 
 class ShoeEncoder(ModelEncoder):
     model = Shoe
     properties = [
-        "name",
-        "brand",
+        "manufacturer",
+        "model_name",
+        "color",
+        "picture_url",
     ]
     encoders = {
         "bin": BinVOEncoder(),
@@ -65,7 +66,7 @@ def api_shoes(request, bin_vo_id=None):
         shoe = Shoe.objects.create(**content)
         return JsonResponse(
             shoe,
-            encoder=ShoesEncoder,
+            encoder=ShoeEncoder,
             safe=False,
         )
 
