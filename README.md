@@ -2,10 +2,11 @@
 
 Team:
 
-* Person 1 - Which microservice?
-* Person 2 - Which microservice?
+* Daniel Glasgow - Hats
+* Erin Ahn - Shoes
 
 ## Design
+Bootstrap for css
 
 ## Shoes microservice
 
