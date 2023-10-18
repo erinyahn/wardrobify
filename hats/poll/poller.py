@@ -4,24 +4,30 @@ import sys
 import time
 import json
 import requests
-from api.hats_rest.models import LocationVO
 
 sys.path.append("")
 os.environ.setdefault("DJANGO_SETTINGS_MODULE", "hats_project.settings")
 django.setup()
 
-# Import models from hats_rest, here.
-# from hats_rest.models import Something
+from hats_rest.models import LocationVO
 
 def get_location():
     url = "http://wardrobe-api:8000/api/locations/"
     response = requests.get(url)
+    print(response)
     content = json.loads(response.content)
-    for location in content["location"]:
-        LocationVO.objects.update_or_create(
+    print(content)
+    for location in content["locations"]:
+        try:
+            obj, created = LocationVO.objects.update_or_create(
             import_href=location["href"],
-            defaults={"name": location["name"]}
         )
+            if created:
+                print("Created and Object", obj)
+            else:
+                print("updated Object")
+        except:
+            print("Did not create an object")
 
 
 def poll():
