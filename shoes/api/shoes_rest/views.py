@@ -12,6 +12,7 @@ from django.shortcuts import render
 class BinVOEncoder(ModelEncoder):
     model = BinVO
     properties = [
+        "name",
         "import_href",
     ]
 
@@ -23,6 +24,8 @@ class ShoeEncoder(ModelEncoder):
         "model_name",
         "color",
         "picture_url",
+        "id",
+        "bin",
     ]
     encoders = {
         "bin": BinVOEncoder(),
