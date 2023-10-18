@@ -2,16 +2,26 @@ import { useEffect, useState } from 'react';
 
 function HatsList() {
   const [hats, setHats] = useState([])
+  const [location, setLocations] = useState([])
 
   const getData = async () => {
-    const response = await fetch('http://localhost:8090/api/hats/');
+    const response1 = await fetch('http://localhost:8090/api/hats/');
 
-    if (response.ok) {
-      const data = await response.json();
-      setHats(data.hats)
-      console.log(data.hats)
+    if (response1.ok) {
+      const data1 = await response1.json();
+      setHats(data1.hats)
+      console.log(data1)
+    }
+
+    const response2 = await fetch('http://localhost:8100/api/locations/');
+
+    if (response2.ok) {
+        const data2 = await response2.json();
+        setLocations(data2.hats)
+        console.log(data2)
     }
   }
+
 
   useEffect(()=>{
     getData()
@@ -43,7 +53,7 @@ function HatsList() {
             <tr key={hat.href}>
               <td>{ hat.name }</td>
               <td>{ hat.fabric }</td>
-              <td>{ hat.location }</td>
+              <td>{ hat.closet_name }</td>
               <td><button className="btn btn-danger" onClick={(e) => handleDelete(hat.id)}>Delete</button></td>
             </tr>
           );
