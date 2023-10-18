@@ -3,6 +3,7 @@ from django.urls import reverse
 
 class LocationVO(models.Model):
     import_href = models.CharField(max_length=200, unique=True)
+    name = models.CharField(max_length=200, null=True)
 
 class Hat(models.Model):
     fabric = models.CharField(max_length=200)

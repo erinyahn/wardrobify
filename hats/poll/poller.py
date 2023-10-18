@@ -21,6 +21,7 @@ def get_location():
         try:
             obj, created = LocationVO.objects.update_or_create(
             import_href=location["href"],
+            name=location["closet_name"],
         )
             if created:
                 print("Created and Object", obj)

@@ -10,6 +10,7 @@ function App() {
       <Nav />
       <div className="container">
         <Routes>
+          <Route path="/" element={<MainPage />} />
           <Route path="hats">
             <Route path="" element={<HatList/>} />
             <Route path="new" element={<HatForm/>} />

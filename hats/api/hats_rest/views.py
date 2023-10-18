@@ -9,6 +9,7 @@ import json
 class LocationVOEncoder(ModelEncoder):
     model = LocationVO
     properties = [
+        "name",
         "import_href"
     ]
 
@@ -20,6 +21,7 @@ class HatEncoder(ModelEncoder):
         "color",
         "picture_url",
         "id",
+        "location",
     ]
     encoders = {
         "location": LocationVOEncoder(),
