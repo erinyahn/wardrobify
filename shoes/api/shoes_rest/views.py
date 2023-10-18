@@ -16,17 +16,6 @@ class BinVOEncoder(ModelEncoder):
     ]
 
 
-# class ShoesEncoder(ModelEncoder):
-#     model = Shoe
-#     properties = [
-#         "id",
-#         "name",
-#     ]
-
-#     def get_extra_data(self, o):
-#         return {"bin": o.bin.name}
-
-
 class ShoeEncoder(ModelEncoder):
     model = Shoe
     properties = [
@@ -60,7 +49,7 @@ def api_shoes(request, bin_vo_id=None):
         except BinVO.DoesNotExist:
             return JsonResponse(
                 {"message": "Invalid bin id"},
-                status=400
+                status=400,
             )
 
         shoe = Shoe.objects.create(**content)
@@ -71,10 +60,10 @@ def api_shoes(request, bin_vo_id=None):
         )
 
 
-@require_http_methods(["GET", "POST", "DELETE"])
+@require_http_methods(["GET", "DELETE"])
 def api_shoe(request, pk):
     if request.method == "GET":
-        shoe = Shoe.object.get(id=pk)
+        shoe = Shoe.objects.get(id=pk)
         return JsonResponse(
             shoe,
             encoder=ShoeEncoder,
