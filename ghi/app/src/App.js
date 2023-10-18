@@ -3,6 +3,8 @@ import MainPage from './MainPage';
 import Nav from './Nav';
 import ShoeForm from './ShoeForm';
 import ShoeList from './ShoeList'
+import BinForm from './BinForm';
+import BinList from './BinList'
 import HatForm from './HatForm';
 import HatList from './HatList';
 import LocationForm from './LocationForm';
@@ -19,6 +21,11 @@ function App() {
           <Route path="shoes">
             <Route path="" element={<ShoeList/>}/>
             <Route path="new" element={<ShoeForm/>} />
+          </Route>
+
+          <Route path="bins">
+            <Route path="" element={<BinList/>}/>
+            <Route path="new" element={<BinForm/>} />
           </Route>
 
           <Route path="hats">
