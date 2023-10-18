@@ -5,6 +5,8 @@ import ShoeForm from './ShoeForm';
 import ShoeList from './ShoeList'
 import HatForm from './HatForm';
 import HatList from './HatList';
+import LocationForm from './LocationForm';
+import LocationList from './LocationList';
 
 function App() {
   return (
@@ -22,6 +24,11 @@ function App() {
           <Route path="hats">
             <Route path="" element={<HatList/>} />
             <Route path="new" element={<HatForm/>} />
+          </Route>
+
+          <Route path="locations">
+            <Route path="" element={<LocationList />} />
+            <Route path = "new" element={<LocationForm />} />
           </Route>
         </Routes>
       </div>
